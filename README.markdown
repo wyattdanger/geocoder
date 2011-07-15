@@ -25,3 +25,9 @@ Produces:
         geometry: [Object],
         types: [Object] } ],
       status: 'OK' }
+
+Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
+
+## Roadmap
+- Reverse Geocoding
+- Error handling
