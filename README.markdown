@@ -1,10 +1,14 @@
 # Geocoder
 
-Installation:
+####Installation:
 
     npm install geocoder
 
-Example:
+#### Usage
+
+You can pass a string representation of a location and a callback function to `geocoder.geocode`. It will accept anything that Google will accept: cities, streets, countries, etc.
+
+####Example:
 
 ```javascript
 var geocoder = require('geocoder');
@@ -16,7 +20,7 @@ geocoder.geocode("Atlanta, GA", function (r) {
 });
 ```
 
-Produces:
+#### Example Produces:
 
     You are using geocoder version 0.0.3
     { results: 
