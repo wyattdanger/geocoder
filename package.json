@@ -1,11 +1,13 @@
 {
   "name": "geocoder",
-    "version": "0.0.1",
-    "main": "index",
-    "description": "node wrapper around google's geocoder api",
-    "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",
-    "license": {
-      "type": "Apachev2",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
+  "description": "Geocoding through Google's Developer API",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "description": "node wrapper around google's geocoder api",
+  "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",
+  "repository" : "git://github.com/wyattdanger/geocoder",
+  "license": {
+    "type": "Apachev2",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }
 }
