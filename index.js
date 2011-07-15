@@ -102,6 +102,12 @@ Geocoder.prototype = {
 
   },
 
+  /**
+   * Return Geocoder version
+   * 
+   * @api public
+   */
+
   version: (function () { return version; })()
 
 };
