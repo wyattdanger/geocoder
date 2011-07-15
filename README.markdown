@@ -13,8 +13,8 @@ You can pass a string representation of a location and a callback function to `g
 ```javascript
 var geocoder = require('geocoder');
 
-geocoder.geocode("Atlanta, GA", function (r) {
-  console.log(r);
+geocoder.geocode("Atlanta, GA", function (data) {
+  console.log(data);
 });
 ```
 
