@@ -1,5 +1,9 @@
 # Geocoder
 
+Installation:
+
+    npm install geocoder
+
 Example:
 
 ```javascript
@@ -12,6 +16,7 @@ geo.geocoder.geocode("Atlanta, GA", function (r) {
 });
 ```
 
+Produces:
 
     You are using geocoder version 0.0.2
     { results: 
