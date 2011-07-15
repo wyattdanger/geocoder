@@ -1,7 +1,7 @@
 # Geocoder
 
 Example:
-```javascript
+    ```javascript
     var geo = require('geocoder');
 
     console.log("You are using geocoder version: " + geo.version);
@@ -10,7 +10,7 @@ Example:
       console.log(r);
     });
 
-```bash
+
     You are using geocoder version 0.0.2
     { results: 
       [ { address_components: [Object],
