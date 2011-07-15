@@ -2,7 +2,7 @@
 
 Example:
 
-```javascript
+    ```javascript
     var geo = require('geocoder');
 
     console.log("You are using geocoder version: " + geo.version);
@@ -10,6 +10,7 @@ Example:
     geo.geocoder.geocode("Atlanta, GA", function (r) {
       console.log(r);
     });
+    ```
 
 
     You are using geocoder version 0.0.2
