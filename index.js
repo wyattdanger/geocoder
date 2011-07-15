@@ -12,7 +12,7 @@ var http = require( 'http' );
  * Version
  */
 
-exports.version = '0.0.2';
+var version = '0.0.2';
 
 /**
  * Formats a given `loc` to submit to Google
@@ -100,7 +100,9 @@ Geocoder.prototype = {
 
     });
 
-  }
+  },
+
+  version: (function () { return version; })()
 
 };
 
@@ -108,7 +110,7 @@ Geocoder.prototype = {
  * Expose the geocoder
  */
 
-exports.geocoder = new Geocoder();
+exports = new Geocoder();
 
 /**
  * Export
