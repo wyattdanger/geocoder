@@ -1,7 +1,8 @@
 # Geocoder
 
 Example:
-    ```javascript
+
+```javascript
     var geo = require('geocoder');
 
     console.log("You are using geocoder version: " + geo.version);
