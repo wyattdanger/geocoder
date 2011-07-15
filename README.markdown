@@ -13,8 +13,6 @@ You can pass a string representation of a location and a callback function to `g
 ```javascript
 var geocoder = require('geocoder');
 
-console.log("You are using geocoder version: " + geocoder.version);
-
 geocoder.geocode("Atlanta, GA", function (r) {
   console.log(r);
 });
@@ -22,7 +20,6 @@ geocoder.geocode("Atlanta, GA", function (r) {
 
 #### Example Produces:
 
-    You are using geocoder version 0.0.3
     { results: 
       [ { address_components: [Object],
         formatted_address: 'Atlanta, GA, USA',
