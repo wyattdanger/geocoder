@@ -1,0 +1,20 @@
+# Geocoder
+
+Example:
+```javascript
+    var geo = require('geocoder');
+
+    console.log("You are using geocoder version: " + geo.version);
+
+    geo.geocoder.geocode("Atlanta, GA", function (r) {
+      console.log(r);
+    });
+
+```bash
+    You are using geocoder version 0.0.2
+    { results: 
+      [ { address_components: [Object],
+        formatted_address: 'Atlanta, GA, USA',
+        geometry: [Object],
+        types: [Object] } ],
+      status: 'OK' }
