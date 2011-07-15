@@ -6,7 +6,7 @@
  * Module Dependencies
  */
 
-var http = require('http');
+var http = require( 'http' );
 
 /**
  * Version
@@ -22,7 +22,7 @@ exports.version = '0.0.1';
  */
 
 function formatLoc ( loc ) {
-    return loc.replace(/\s/g, '+');
+    return loc.replace( /\s/g, '+' );
 }
 
 /**
@@ -32,13 +32,13 @@ function formatLoc ( loc ) {
  * @api private
  */
 
-function merge (objects) {
+function merge ( objects ) {
     var result = {},
         args = Array.prototype.slice.call( arguments );
 
-    args.forEach(function (item) {
-        for (var prop in item) {
-            if (item.hasOwnProperty(prop)) {
+    args.forEach(function ( item ) {
+        for ( var prop in item ) {
+            if ( item.hasOwnProperty( prop ) ) {
                 result[prop] = item[prop];
             }
         }
@@ -68,9 +68,9 @@ Geocoder.prototype = {
    * @api public
    */
 
-  geocode: function ( loc, cbk, opts) {
+  geocode: function ( loc, cbk, opts ) {
     if ( ! loc ) {
-      throw new Error("Geocoder.geocode requires a string. You passed " + loc);
+      throw new Error( "Geocoder.geocode requires a string. You passed " + loc );
     }
 
     var sensor, defaults, options;
@@ -80,7 +80,7 @@ Geocoder.prototype = {
     defaults = {
       host: 'maps.googleapis.com',
       port: 80,
-      path: '/maps/api/geocode/json?address=' + formatLoc(loc) + '&sensor=' + sensor,
+      path: '/maps/api/geocode/json?address=' + formatLoc( loc ) + '&sensor=' + sensor,
       headers: {}
     };
 
@@ -89,11 +89,11 @@ Geocoder.prototype = {
     http.get( options, function ( response ) {
       var data = "", result;
 
-      response.on("data", function (chunk) {
+      response.on("data", function ( chunk ) {
         data += chunk;
       });
 
-      response.on("end", function (argument) {
+      response.on("end", function ( argument ) {
         result = JSON.parse( data );
         return cbk( result );
       });
