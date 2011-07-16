@@ -19,12 +19,14 @@ geocoder.geocode("Atlanta, GA", function (data) {
 });
 
 // Reverse Geocoding
-geo.reverseGeocode( 33.7489, -84.3789, function (data) {
+geocoder.reverseGeocode( 33.7489, -84.3789, function (data) {
   console.log(data);
 });
 ```
 
 Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
+
+You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false).
 
 ## Roadmap
 - Error handling
