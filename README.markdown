@@ -30,3 +30,6 @@ You can pass in an optional options hash as a last argument, useful for setting 
 
 ## Roadmap
 - Error handling
+
+## Further Reading
+- [Blog post](http://blog.stephenwyattbush.com/2011/07/16/geocoding-with-nodejs/)
