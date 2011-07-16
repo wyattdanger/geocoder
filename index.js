@@ -12,7 +12,7 @@ var http = require( 'http' );
  * Version
  */
 
-var version = '0.0.3';
+var version = '0.0.4';
 
 /**
  * Formats a given `loc` to submit to Google
