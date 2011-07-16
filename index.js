@@ -48,6 +48,32 @@ function merge ( objects ) {
 }
 
 /**
+ * Makes request to Google API and passes result to a callback
+ *
+ * @param {Object} options, required
+ * @param {Function} callback, required
+ * @api private
+ */
+
+function request ( options, cbk ) {
+
+  http.get( options, function ( response ) {
+    var data = "", result;
+
+    response.on("data", function ( chunk ) {
+      data += chunk;
+    });
+
+    response.on("end", function ( argument ) {
+      result = JSON.parse( data );
+      return cbk( result );
+    });
+
+  });
+
+}
+
+/**
  * Geocoder 
  */
 
@@ -86,19 +112,29 @@ Geocoder.prototype = {
 
     options = merge( defaults, opts || {} );
 
-    http.get( options, function ( response ) {
-      var data = "", result;
+    return request( options, cbk ); 
 
-      response.on("data", function ( chunk ) {
-        data += chunk;
-      });
+  },
 
-      response.on("end", function ( argument ) {
-        result = JSON.parse( data );
-        return cbk( result );
-      });
+  reverseGeocode: function ( lat, lng, cbk, opts ) {
+    if ( !lat || !lng ) {
+      throw new Error( "Geocoder.geocode requires a lat and lng" );
+    }
 
-    });
+    var sensor, defaults, options;
+
+    sensor = opts && opts.sensor ? opts.sensor : false;
+
+    defaults = {
+      host: 'maps.googleapis.com',
+      port: 80,
+      path: '/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=' + sensor,
+      headers: {}
+    };
+
+    options = merge( defaults, opts || {} );
+
+    return request( options, cbk ); 
 
   },
 

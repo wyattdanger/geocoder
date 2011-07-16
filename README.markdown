@@ -13,22 +13,18 @@ You can pass a string representation of a location and a callback function to `g
 ```javascript
 var geocoder = require('geocoder');
 
+// Geocoding
 geocoder.geocode("Atlanta, GA", function (data) {
+  console.log(data);
+});
+
+// Reverse Geocoding
+geo.reverseGeocode( 33.7489, -84.3789, function (data) {
   console.log(data);
 });
 ```
 
-#### Example Produces:
-
-    { results: 
-      [ { address_components: [Object],
-        formatted_address: 'Atlanta, GA, USA',
-        geometry: [Object],
-        types: [Object] } ],
-      status: 'OK' }
-
 Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
 
 ## Roadmap
-- Reverse Geocoding
 - Error handling
