@@ -60,15 +60,21 @@ function request ( options, cbk ) {
   http.get( options, function ( response ) {
     var data = "", result;
 
+    response.on("error", function ( err ) {
+      return cbk( err );
+    });
+
     response.on("data", function ( chunk ) {
       data += chunk;
     });
 
     response.on("end", function ( argument ) {
       result = JSON.parse( data );
-      return cbk( result );
+      return cbk( null, result );
     });
 
+  }).on("error", function (err) {
+    return cbk( err );
   });
 
 }
@@ -95,10 +101,10 @@ Geocoder.prototype = {
    */
 
   geocode: function ( loc, cbk, opts ) {
-    if ( ! loc ) {
-      throw new Error( "Geocoder.geocode requires a string. You passed " + loc );
-    }
 
+    if ( ! loc ) {
+        return cbk( new Error( "Geocoder.geocode requires a location.") );
+    }
     var sensor, defaults, options;
 
     sensor = opts && opts.sensor ? opts.sensor : false;
@@ -118,7 +124,7 @@ Geocoder.prototype = {
 
   reverseGeocode: function ( lat, lng, cbk, opts ) {
     if ( !lat || !lng ) {
-      throw new Error( "Geocoder.geocode requires a lat and lng" );
+      return cbk( new Error( "Geocoder.geocode requires a latitude and longitude." ) );
     }
 
     var sensor, defaults, options;
