@@ -14,13 +14,13 @@ You can pass a string representation of a location and a callback function to `g
 var geocoder = require('geocoder');
 
 // Geocoding
-geocoder.geocode("Atlanta, GA", function (data) {
-  console.log(data);
+geocoder.geocode("Atlanta, GA", function ( err, data ) {
+  // do something with data
 });
 
 // Reverse Geocoding
-geocoder.reverseGeocode( 33.7489, -84.3789, function (data) {
-  console.log(data);
+geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
+  // do something with data
 });
 ```
 
@@ -29,7 +29,7 @@ Results will look like standard [Google JSON Output](http://code.google.com/apis
 You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false).
 
 ## Roadmap
-- Error handling
+- Tests
 
 ## Further Reading
 - [Blog post](http://blog.stephenwyattbush.com/2011/07/16/geocoding-with-nodejs/)
