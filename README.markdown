@@ -22,6 +22,11 @@ geocoder.geocode("Atlanta, GA", function ( err, data ) {
 geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
   // do something with data
 });
+
+// Setting sensor to true
+geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
+  // do something with data
+}, { sensor: true });
 ```
 
 Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
@@ -30,6 +35,7 @@ You can pass in an optional options hash as a last argument, useful for setting 
 
 ## Roadmap
 - Tests
+- Better options handling
 
 ## Further Reading
 - [Blog post](http://blog.stephenwyattbush.com/2011/07/16/geocoding-with-nodejs/)
