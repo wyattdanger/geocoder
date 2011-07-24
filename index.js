@@ -124,7 +124,7 @@ Geocoder.prototype = {
 
   reverseGeocode: function ( lat, lng, cbk, opts ) {
     if ( !lat || !lng ) {
-      return cbk( new Error( "Geocoder.geocode requires a latitude and longitude." ) );
+      return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
     var sensor, defaults, options;
