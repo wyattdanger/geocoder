@@ -3,7 +3,7 @@ var vows = require('vows'),
     geocoder = require('../index.js');
 
 
-vows.describe('Geocoder public interface').addBatch({
+vows.describe('Geocoder Public Interface').addBatch({
     'after requiring geocoder': {
         topic: geocoder,
         'geocoder exposes a geocode method': function (topic) {
