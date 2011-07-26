@@ -1,14 +1,14 @@
 # Geocoder
 
-####Installation:
+###Installation:
 
     npm install geocoder
 
-#### Usage
+### Usage
 
 You can pass a string representation of a location and a callback function to `geocoder.geocode`. It will accept anything that Google will accept: cities, streets, countries, etc.
 
-####Example:
+###Example:
 
 ```javascript
 var geocoder = require('geocoder');
@@ -33,8 +33,11 @@ Results will look like standard [Google JSON Output](http://code.google.com/apis
 
 You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false).
 
+###Testing:
+Tests are written with [Vows](http://vowsjs.org/) and can be run from project root with `node test/*`.
+
 ## Roadmap
-- Tests
+- Complete Test Suite
 - Better options handling
 
 ## Further Reading
