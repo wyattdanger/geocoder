@@ -27,11 +27,19 @@ geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
 geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
   // do something with data
 }, { sensor: true });
+
+// Setting language to German
+geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
+  // do something with data
+}, { language: 'de' });
+
+
+
 ```
 
 Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
 
-You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false).
+You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false) and the language (default is empty which means that google geocoder will guess it by geo ip data)
 
 ###Testing:
 Tests are written with [Vows](http://vowsjs.org/) and can be run from project root with `node test/*`.

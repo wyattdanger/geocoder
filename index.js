@@ -105,14 +105,15 @@ Geocoder.prototype = {
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
-    var sensor, defaults, options;
+    var sensor, defaults, options, language;
 
     sensor = opts && opts.sensor ? opts.sensor : false;
+    language = (opts && opts.language) ? opts.language : '';
 
     defaults = {
       host: 'maps.googleapis.com',
       port: 80,
-      path: '/maps/api/geocode/json?address=' + formatLoc( loc ) + '&sensor=' + sensor,
+      path: '/maps/api/geocode/json?address=' + formatLoc( loc ) + '&sensor=' + sensor + '&language=' + language,
       headers: {}
     };
 
@@ -127,14 +128,15 @@ Geocoder.prototype = {
       return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
-    var sensor, defaults, options;
+    var sensor, defaults, options, language;
 
     sensor = opts && opts.sensor ? opts.sensor : false;
+    language = opts && opts.language ? opts.language : '';
 
     defaults = {
       host: 'maps.googleapis.com',
       port: 80,
-      path: '/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=' + sensor,
+      path: '/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=' + sensor + '&language=' + language,
       headers: {}
     };
 
