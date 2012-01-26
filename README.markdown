@@ -39,7 +39,7 @@ geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
 
 Results will look like standard [Google JSON Output](http://code.google.com/apis/maps/documentation/geocoding/#JSON)
 
-You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false) and the language (default is empty which means that google geocoder will guess it by geo ip data)
+You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false) and the language (default is empty which means that google geocoder will guess it by geo ip data). For details see the [Google Geocoding API Docs](http://code.google.com/intl/en-US/apis/maps/documentation/geocoding/#GeocodingRequests)
 
 ###Testing:
 Tests are written with [Vows](http://vowsjs.org/) and can be run from project root with `node test/*`.

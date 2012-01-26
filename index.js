@@ -8,23 +8,13 @@
 
 var http = require( 'http' );
 var Hash = require('hashish');
+var querystring = require('querystring');
 
 /**
  * Version
  */
 
 var version = '0.0.5';
-
-/**
- * Formats a given `loc` to submit to Google
- *
- * @param {String} loc, required
- * @api private
- */
-
-function formatLoc ( loc ) {
-    return loc.replace( /\s/g, '+' );
-}
 
 /**
  * Makes request to Google API and passes result to a callback
@@ -84,22 +74,17 @@ Geocoder.prototype = {
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
-    var sensor, defaults, options, language;
 
-    sensor = opts && opts.sensor ? opts.sensor : false;
-    language = (opts && opts.language) ? opts.language : '';
+    var options = Hash.merge({sensor: false, address: loc}, opts || {});
 
-    defaults = {
+    var params = {
       host: 'maps.googleapis.com',
       port: 80,
-      path: '/maps/api/geocode/json?address=' + formatLoc( loc ) + '&sensor=' + sensor + '&language=' + language,
+      path: '/maps/api/geocode/json?' + querystring.stringify(options),
       headers: {}
     };
 
-    options = Hash.merge( defaults, opts || {} );
-
-    return request( options, cbk ); 
-
+    return request( params, cbk );
   },
 
   reverseGeocode: function ( lat, lng, cbk, opts ) {
@@ -107,21 +92,16 @@ Geocoder.prototype = {
       return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
-    var sensor, defaults, options, language;
+    var options = Hash.merge({sensor: false, latlng: lat + ',' + lng}, opts || {});
 
-    sensor = opts && opts.sensor ? opts.sensor : false;
-    language = opts && opts.language ? opts.language : '';
-
-    defaults = {
+    var params = {
       host: 'maps.googleapis.com',
       port: 80,
-      path: '/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=' + sensor + '&language=' + language,
+      path: '/maps/api/geocode/json?' + querystring.stringify(options),
       headers: {}
     };
 
-    options = Hash.merge( defaults, opts || {} );
-
-    return request( options, cbk ); 
+    return request( params, cbk );
 
   },
 
@@ -136,13 +116,7 @@ Geocoder.prototype = {
 };
 
 /**
- * Expose the geocoder
- */
-
-exports = new Geocoder();
-
-/**
  * Export
  */
 
-module.exports = exports;
+module.exports = new Geocoder();
