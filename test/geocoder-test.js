@@ -1,16 +1,33 @@
-var vows = require('vows'),
-    assert = require('assert'),
-    geocoder = require('../index.js');
+geocoder = require('../index.js');
 
+module.exports = {
+  testExposeGeocodeFunction: function(test){
+    test.equal(typeof geocoder.geocode, 'function');
+    test.done()
+  },
 
-vows.describe('Geocoder Public Interface').addBatch({
-    'after requiring geocoder': {
-        topic: geocoder,
-        'geocoder exposes a geocode method': function (topic) {
-            assert.equal(typeof geocoder.geocode, 'function');
-        },
-        'geocoder exposes a reverseGeocode method': function (topic) {
-            assert.equal(typeof geocoder.reverseGeocode, 'function');
-        }
-    }
-}).run();
+  testExposeGeocodeFunction: function(test){
+    test.equal(typeof geocoder.geocode, 'function');
+    test.done()
+  },
+
+  testGeocode: function(test){
+    test.expect(3);
+    geocoder.geocode("Plattlinger Str. 10, 81479 Munich, Germany", function(err, result){
+      test.ok(!err);
+      test.equals('OK', result.status);
+      test.ok(result.results[0].formatted_address.match(/Munich/));
+      test.done();
+    });
+  },
+
+  testLanguage: function(test){
+    test.expect(3);
+    geocoder.geocode("Plattlinger Str. 10, 81479 München, Deutschland", function(err, result){
+      test.ok(!err);
+      test.equals('OK', result.status);
+      test.ok(result.results[0].formatted_address.match(/München/));
+      test.done();
+    }, {language: 'de'});
+  }
+}
