@@ -7,6 +7,7 @@
  */
 
 var http = require( 'http' );
+var Hash = require('hashish');
 
 /**
  * Version
@@ -23,28 +24,6 @@ var version = '0.0.5';
 
 function formatLoc ( loc ) {
     return loc.replace( /\s/g, '+' );
-}
-
-/**
- * Combines given `objects` and returns the result
- *
- * @param objects, required
- * @api private
- */
-
-function merge ( objects ) {
-    var result = {},
-        args = Array.prototype.slice.call( arguments );
-
-    args.forEach(function ( item ) {
-        for ( var prop in item ) {
-            if ( item.hasOwnProperty( prop ) ) {
-                result[prop] = item[prop];
-            }
-        }
-    });
-
-    return result;
 }
 
 /**
@@ -117,7 +96,7 @@ Geocoder.prototype = {
       headers: {}
     };
 
-    options = merge( defaults, opts || {} );
+    options = Hash.merge( defaults, opts || {} );
 
     return request( options, cbk ); 
 
@@ -140,7 +119,7 @@ Geocoder.prototype = {
       headers: {}
     };
 
-    options = merge( defaults, opts || {} );
+    options = Hash.merge( defaults, opts || {} );
 
     return request( options, cbk ); 
 
