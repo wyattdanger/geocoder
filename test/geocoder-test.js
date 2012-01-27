@@ -6,11 +6,6 @@ module.exports = {
     test.done()
   },
 
-  testExposeGeocodeFunction: function(test){
-    test.equal(typeof geocoder.geocode, 'function');
-    test.done()
-  },
-
   testGeocode: function(test){
     test.expect(3);
     geocoder.geocode("Plattlinger Str. 10, 81479 Munich, Germany", function(err, result){
