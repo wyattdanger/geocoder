@@ -1,7 +1,7 @@
 {
   "name": "geocoder",
   "description": "Geocoding through Google's Developer API",
-  "version": "0.0.5",
+  "version": "0.1",
   "main": "./index.js",
   "description": "node wrapper around google's geocoder api",
   "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",

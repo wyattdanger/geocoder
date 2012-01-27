@@ -14,7 +14,7 @@ var querystring = require('querystring');
  * Version
  */
 
-var version = '0.0.5';
+var version = '0.1';
 
 /**
  * Makes request to Google API and passes result to a callback
