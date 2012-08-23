@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/wyattdanger/geocoder.png)](http://travis-ci.org/wyattdanger/geocoder)
 # Geocoder
 
 ###Installation:
