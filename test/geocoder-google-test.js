@@ -31,10 +31,10 @@ module.exports = {
       test.ok(!err);
       test.equals('OK', result.status);
       // console.error(result.results[0].formatted_address);
-      test.ok(result.results[0].formatted_address.match(/Montigny-lès-Metz/));
+      test.ok(result.results[0].formatted_address.match(/Montigny-lès-Metz/i));
       result.results[0].address_components.forEach(function(ac) {
         if (ac.types.indexOf("locality")>=0) {
-          test.equals(ac.short_name,"Montigny-lès-Metz");
+          test.ok(ac.short_name.match(/^Montigny-lès-Metz$/i));
         }
         if (ac.types.indexOf("country")>=0) {
           test.equals(ac.short_name,"FR");
@@ -49,11 +49,11 @@ module.exports = {
   },
 
   testReverseGeocodeGoogleplex: function(test){
-    test.expect(8);
+    test.expect(9);
     geocoder.reverseGeocode(37.42291810, -122.08542120, function(err, result){
       test.ok(!err);
       test.equals('OK', result.status);
-      test.ok(result.results[0].formatted_address.match(/Mountain View/));
+      test.ok(result.results[0].formatted_address.match(/Mountain View/i));
       result.results[0].address_components.forEach(function(ac) {
         if (ac.types.indexOf("locality")>=0) {
           test.equals(ac.short_name,"Mountain View");
@@ -63,10 +63,11 @@ module.exports = {
           test.equals(ac.long_name,"United States");
         }
         if (ac.types.indexOf("route")>=0) {
-          test.equals(ac.short_name,"Amphitheatre Pkwy");
+          test.ok(ac.short_name.match(/^Amphitheatre Pk(w?)y$/i));
         }
         if (ac.types.indexOf("administrative_area_level_1")>=0) {
           test.equals(ac.short_name,"CA");
+          test.equals(ac.long_name,"California");
         }
       });
       test.done();
