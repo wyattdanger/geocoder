@@ -35,13 +35,22 @@ geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
 
 
 // Selecting another provider to do reverse geocoding
-// Currently only geonames is supported
+// Currently only geonames and yahoo placefinder are supported
 geocoder.selectProvider("geonames",{"username":"demo"});
 
 // Output will be roughly in the same format as Google's
 geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
   // do something with data
 });
+
+// see http://developer.yahoo.com/geo/placefinder/guide/index.html
+geocoder.selectProvider("yahoo",{"appid":"xxx"});
+
+// Output will be roughly in the same format as Google's
+geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
+  // do something with data
+});
+
 
 
 
