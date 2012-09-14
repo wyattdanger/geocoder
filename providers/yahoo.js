@@ -1,6 +1,3 @@
-http://where.yahooapis.com/geocode?q=45.1909,%205.7183&gflags=R&flags=J&appid=[yourappidhere]
-
-
 // xml2js is optional because only needed for geonames support
 var xml2js = require("xml2js");
 var request = require("request");
@@ -31,7 +28,7 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
     var result = JSON.parse(body);
 
-    // Transform geonames' structure into something that looks like Google's JSON outpu
+    // Transform yahoo' structure into something that looks like Google's JSON outpu
     // https://developers.google.com/maps/documentation/geocoding/#JSON
     var googlejson = {
       "status":"OK",
