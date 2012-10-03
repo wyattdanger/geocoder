@@ -52,19 +52,19 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
       ]
     };
 
-    if (result.ResultSet.Error !== "0") {
+    if (result.ResultSet.Error !== "0" && result.ResultSet.Error !== 0) {
       console.log("[GEOCODER Yahoo API] ERROR", result.Error, result.ErrorMessage);
       return cbk(result.ResultSet.ErrorMessage);
     }
 
     var a = null;
-    if (result.ResultSet.Found == "1") {
+    // Yahoo seems to change its response format "randomly". So, sometimes, it there is only one result,
+    // it will be in ResultSet.Result, and sometimes, in ResultSet.Results[0]
+    if (undefined !== result.ResultSet.Result) {
       a = result.ResultSet.Result;
     }
-    else {
-      if (result.ResultSet.Results && result.ResultSet.Results.length) {
-        a = result.ResultSet.Results[0];
-      }
+    else if (result.ResultSet.Results && result.ResultSet.Results.length) {
+      a = result.ResultSet.Results[0];
     }
 
     if (!a) {
