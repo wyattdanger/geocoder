@@ -6,59 +6,47 @@
  * Module Dependencies
  */
 
-var http = require( 'http' );
-var Hash = require('hashish');
-var querystring = require('querystring');
-
 /**
  * Version
  */
 
-var version = '0.1.0';
+var version = '0.2.0';
 
-/**
- * Makes request to Google API and passes result to a callback
- *
- * @param {Object} options, required
- * @param {Function} callback, required
- * @api private
- */
-
-function request ( options, cbk ) {
-
-  http.get( options, function ( response ) {
-    var data = "", result;
-
-    response.on("error", function ( err ) {
-      return cbk( err );
-    });
-
-    response.on("data", function ( chunk ) {
-      data += chunk;
-    });
-
-    response.on("end", function ( argument ) {
-      result = JSON.parse( data );
-      return cbk( null, result );
-    });
-
-  }).on("error", function (err) {
-    return cbk( err );
-  });
-
-}
 
 /**
  * Geocoder 
  */
 
-function Geocoder () {}
+function Geocoder () {
+  this.selectProvider("google");
+};
 
 /**
  * Geocoder prototype
  */
 
 Geocoder.prototype = {
+
+
+  /**
+   * Selects a webservice provider
+   * 
+   * @param {String} name, required
+   * @param {Object} opts, optional
+   * @api public
+   */
+
+  selectProvider: function ( name, opts ) {
+
+    if ( ! name ) {
+      return cbk( new Error( "Geocoder.selectProvider requires a name.") );
+    }
+
+    this.provider = name;
+    this.providerOpts = opts || {};
+    this.providerObj = require("./providers/"+name);
+
+  },
 
   /**
    * Request geocoordinates of given `loc` from Google
@@ -74,17 +62,9 @@ Geocoder.prototype = {
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
+    
+    return this.providerObj.geocode(this.providerOpts, loc, cbk, opts);
 
-    var options = Hash.merge({sensor: false, address: loc}, opts || {});
-
-    var params = {
-      host: 'maps.googleapis.com',
-      port: 80,
-      path: '/maps/api/geocode/json?' + querystring.stringify(options),
-      headers: {}
-    };
-
-    return request( params, cbk );
   },
 
   reverseGeocode: function ( lat, lng, cbk, opts ) {
@@ -92,16 +72,7 @@ Geocoder.prototype = {
       return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
-    var options = Hash.merge({sensor: false, latlng: lat + ',' + lng}, opts || {});
-
-    var params = {
-      host: 'maps.googleapis.com',
-      port: 80,
-      path: '/maps/api/geocode/json?' + querystring.stringify(options),
-      headers: {}
-    };
-
-    return request( params, cbk );
+    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, cbk, opts );
 
   },
 
