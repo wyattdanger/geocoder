@@ -3,10 +3,13 @@ var _ = require('underscore');
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
-  var options = _.extend({sensor: false, address: loc}, opts || {});
+  var options = _.extend({sensor: false, address: loc}, opts || {}),
+    hostPath = "maps.googleapis.com/maps/api/geocode/json",
+    protocol = (opts && opts.key) ? "https://" : "http://",
+    uri =  protocol + hostPath;
 
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri:uri,
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
@@ -16,10 +19,13 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
-  var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
+  var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {}),
+    hostPath = "maps.googleapis.com/maps/api/geocode/json",
+    protocol = (opts && opts.key) ? "https://" : "http://",
+    uri =  protocol + hostPath;
 
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri:uri,
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
