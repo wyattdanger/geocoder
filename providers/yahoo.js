@@ -12,7 +12,14 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
-    cbk(null,JSON.parse(body));
+    var result;
+    try {
+      result = JSON.parse(body);
+    } catch (err) {
+      cbk(err);
+      return;
+    }
+    cbk(null,result);
   });
 };
 
@@ -32,7 +39,13 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
     if (err) return cbk(err);
 
-    var result = JSON.parse(body);
+    var result;
+    try {
+      result = JSON.parse(body);
+    } catch (err) {
+      cbk(err);
+      return;
+    }
 
     // Transform yahoo' structure into something that looks like Google's JSON outpu
     // https://developers.google.com/maps/documentation/geocoding/#JSON
