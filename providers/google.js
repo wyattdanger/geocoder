@@ -4,9 +4,9 @@ var _ = require('underscore');
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
   var options = _.extend({sensor: false, address: loc}, opts || {});
-
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri: uri,
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
@@ -17,9 +17,10 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
   var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
 
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri:uri,
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
