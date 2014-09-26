@@ -1,12 +1,17 @@
 var request = require("request");
-var _ = require('underscore');
+var _ = require("underscore");
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
-  var options = _.extend({sensor: false, address: loc}, opts || {});
+  var proto = "http:",
+      options = _.extend({sensor: false, address: loc}, opts || {});
+      
+  if(_.has(options,"key"){
+    proto = "https:";
+  }
 
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri:proto+"//maps.googleapis.com/maps/api/geocode/json",
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
@@ -16,10 +21,15 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
-  var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
+  var proto = "http:",
+      options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
+      
+  if(_.has(options,"key"){
+    proto = "https:";
+  }
 
   request({
-    uri:"http://maps.googleapis.com/maps/api/geocode/json",
+    uri:proto+"//maps.googleapis.com/maps/api/geocode/json",
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
