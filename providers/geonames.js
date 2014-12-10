@@ -13,7 +13,14 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
     qs:options
   }, function(err,resp,body) {
     if (err) return cbk(err);
-    cbk(null,JSON.parse(body));
+    var result;
+    try {
+      result = JSON.parse(body);
+    } catch (err) {
+      cbk(err);
+      return;
+    }
+    cbk(null,result);
   });
 };
 
