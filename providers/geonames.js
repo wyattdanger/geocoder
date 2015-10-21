@@ -2,11 +2,11 @@
 // xml2js is optional because only needed for geonames support
 var xml2js = require("xml2js");
 var request = require("request");
-var _ = require('underscore');
+var extend = require('extend');
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
-  var options = _.extend({q: loc, maxRows: 10, username:providerOpts.username||"demo" }, opts || {});
+  var options = extend({q: loc, maxRows: 10, username:providerOpts.username||"demo" }, opts || {});
 
   request({
     uri:"http://api.geonames.org/searchJSON",
@@ -26,7 +26,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
-  var options = _.extend({lat:lat, lng:lng, username:providerOpts.username||"demo" }, opts || {});
+  var options = extend({lat:lat, lng:lng, username:providerOpts.username||"demo" }, opts || {});
 
   request({
     uri:"http://api.geonames.org/extendedFindNearby",

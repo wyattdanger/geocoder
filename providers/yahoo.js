@@ -1,11 +1,11 @@
 // xml2js is optional because only needed for geonames support
 var xml2js = require("xml2js");
 var request = require("request");
-var _ = require('underscore');
+var extend = require('extend');
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
-  var options = _.extend({q: loc, flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
+  var options = extend({q: loc, flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 
   request({
     uri:"http://where.yahooapis.com/geocode",
@@ -26,7 +26,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 // yahoo placefinder api http://developer.yahoo.com/geo/placefinder/guide/
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
-  var options = _.extend({q: lat+", "+lng, gflags:"R", flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
+  var options = extend({q: lat+", "+lng, gflags:"R", flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 
   request({
     uri:"http://where.yahooapis.com/geocode",

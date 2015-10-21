@@ -1,9 +1,9 @@
 var request = require("request");
-var _ = require('underscore');
+var extend = require('extend');
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
-  var options = _.extend({address: loc}, opts || {});
+  var options = extend({address: loc}, opts || {});
   var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
   request({
     uri: uri,
@@ -23,7 +23,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
 exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
-  var options = _.extend({latlng: lat + ',' + lng}, opts || {});
+  var options = extend({latlng: lat + ',' + lng}, opts || {});
   var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
 
   request({
