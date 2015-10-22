@@ -17,7 +17,7 @@ module.exports = {
 
   testGeocode: function(test){
     test.expect(3);
-    geocoder.geocode("Munich, Germany", function(err, result){
+    geocoder.geocode("Munich, Germany", {}, function(err, result){
       test.ok(!err);
       test.equals('OK', result.status);
       test.ok(result.results[0].formatted_address.match(/Munich/));
@@ -27,7 +27,7 @@ module.exports = {
 
   testReverseGeocode: function(test){
     test.expect(7);
-    geocoder.reverseGeocode(49.101,6.1442, function(err, result){
+    geocoder.reverseGeocode(49.101,6.1442, {}, function(err, result){
       test.ok(!err);
       test.equals('OK', result.status);
       // console.error(result.results[0].formatted_address);
@@ -50,7 +50,7 @@ module.exports = {
 
   testReverseGeocodeGoogleplex: function(test){
     test.expect(9);
-    geocoder.reverseGeocode(37.42291810, -122.08542120, function(err, result){
+    geocoder.reverseGeocode(37.42291810, -122.08542120, {}, function(err, result){
       test.ok(!err);
       test.equals('OK', result.status);
       test.ok(result.results[0].formatted_address.match(/Mountain View/i));
@@ -76,7 +76,7 @@ module.exports = {
 
   testLanguage: function(test){
     test.expect(3);
-    geocoder.geocode("Plattlinger Str. 10, 81479 München, Deutschland", function(err, result){
+    geocoder.geocode("Plattlinger Str. 10, 81479 München, Deutschland", {}, function(err, result){
       test.ok(!err);
       test.equals('OK', result.status);
       test.ok(result.results[0].formatted_address.match(/München/));
