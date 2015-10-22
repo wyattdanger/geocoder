@@ -1,7 +1,7 @@
 var request = require("request");
 var extend = require('extend');
 
-exports.geocode = function ( providerOpts, loc, cbk, opts ) {
+exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
   var options = extend({address: loc}, opts || {});
   var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
@@ -21,10 +21,10 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
   });
 };
 
-exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
+exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
   var options = extend({latlng: lat + ',' + lng}, opts || {});
-  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json";
 
   request({
     uri:uri,

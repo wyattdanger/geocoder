@@ -57,7 +57,7 @@ Geocoder.prototype = {
    * @api public
    */
 
-  geocode: function ( loc, cbk, opts ) {
+  geocode: function ( loc, opts, cbk ) {
 
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
@@ -67,13 +67,12 @@ Geocoder.prototype = {
 
   },
 
-  reverseGeocode: function ( lat, lng, cbk, opts ) {
+  reverseGeocode: function ( lat, lng, opts, cbk ) {
     if ( !lat || !lng ) {
       return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
-    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, cbk, opts );
-
+    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, opts, cbk);
   },
 
   /**

@@ -3,7 +3,7 @@ var xml2js = require("xml2js");
 var request = require("request");
 var extend = require('extend');
 
-exports.geocode = function ( providerOpts, loc, cbk, opts ) {
+exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
   var options = extend({q: loc, flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 
@@ -24,7 +24,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 };
 
 // yahoo placefinder api http://developer.yahoo.com/geo/placefinder/guide/
-exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
+exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
   var options = extend({q: lat+", "+lng, gflags:"R", flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 

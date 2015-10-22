@@ -4,7 +4,7 @@ var xml2js = require("xml2js");
 var request = require("request");
 var extend = require('extend');
 
-exports.geocode = function ( providerOpts, loc, cbk, opts ) {
+exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
   var options = extend({q: loc, maxRows: 10, username:providerOpts.username||"demo" }, opts || {});
 
@@ -24,7 +24,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
   });
 };
 
-exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
+exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
   var options = extend({lat:lat, lng:lng, username:providerOpts.username||"demo" }, opts || {});
 
