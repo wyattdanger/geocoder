@@ -1,7 +1,7 @@
 {
   "name": "geocoder",
   "description": "node wrapper around google's geocoder api",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "./index.js",
   "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",
   "repository": "git://github.com/wyattdanger/geocoder",
