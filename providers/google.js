@@ -4,7 +4,7 @@ var extend = require('extend');
 exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
   var options = extend({address: loc}, opts || {});
-  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json";
   request({
     uri: uri,
     qs:options
