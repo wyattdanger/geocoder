@@ -63,7 +63,7 @@ Geocoder.prototype = {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
     
-    return this.providerObj.geocode(this.providerOpts, loc, cbk, opts);
+    return this.providerObj.geocode(this.providerOpts, loc, opts, cbk);
 
   },
 
