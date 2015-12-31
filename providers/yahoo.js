@@ -1,5 +1,3 @@
-// xml2js is optional because only needed for geonames support
-var xml2js = require("xml2js");
 var request = require("request");
 var extend = require('extend');
 
