@@ -52,7 +52,7 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
     var view = result.Response.View[0];
     if(!view) {
-      cbk(false, result);
+      cbk(true, result);
     }
 
     // Transform Here structure into something that looks like Google's JSON output
