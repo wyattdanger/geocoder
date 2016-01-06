@@ -84,10 +84,10 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
           "types":["route"]
         });
 
-      if (a.city || a.town || a.village || e.hamlet)
+      if (a.city || a.town || a.village || a.hamlet)
         googlejson.results[0].address_components.push({
-          "long_name": a.city || a.town || a.village || e.hamlet,
-          "short_name": a.city || a.town || a.village || e.hamlet,
+          "long_name": a.city || a.town || a.village || a.hamlet,
+          "short_name": a.city || a.town || a.village || a.hamlet,
           "types":["locality", "political"]
         });
 
