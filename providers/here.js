@@ -3,8 +3,6 @@ var extend = require('extend');
 
 exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
-  console.log("Here");
-
   var options = extend({searchtext: loc, gen:"9", app_id:providerOpts.appid||"[yourappidhere]", app_code: providerOpts.appcode||"[yourappcodehere]" }, opts || {});
 
   request({
@@ -53,6 +51,7 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
     var view = result.Response.View[0];
     if(!view) {
       cbk(true, result);
+      return;
     }
 
     // Transform Here structure into something that looks like Google's JSON output
