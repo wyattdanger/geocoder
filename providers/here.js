@@ -125,11 +125,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
           "types":[ "country", "political" ]
         });
 
-      if (location.DisplayPosition.Latitude && typeof location.DisplayPosition.Latitude=="string")
+      /*if (location.DisplayPosition.Latitude && typeof location.DisplayPosition.Latitude=="string")
         googlejson.results[0].geometry.location = {
           "lat":parseFloat(location.DisplayPosition.Latitude),
           "lng":parseFloat(location.DisplayPosition.Longitude)
-        }
+        }*/
 
       // Make a formatted address as well as we can
       googlejson.results[0].formatted_address = a.Label;

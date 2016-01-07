@@ -131,11 +131,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
         "types":[ "postal_code" ]
       });
 
-    if (a.latitude)
+    /*if (a.latitude)
       googlejson.results[0].geometry.location = {
         "lat":parseFloat(a.latitude),
         "lng":parseFloat(a.longitude)
-      };
+      };*/
 
     // Make a formatted address as well as we can
     var formatted = [];

@@ -38,6 +38,10 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
       cbk(err);
       return;
     }
+
+    result.results[0].geometry.location.lat = parseFloat(lat);
+    result.results[0].geometry.location.lng = parseFloat(lng);
+
     cbk(null,result);
   });
 

@@ -112,11 +112,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
           "types":[ "country", "political" ]
         });
 
-      if (result.lat && typeof a.lat=="string")
+      /*if (result.lat && typeof a.lat=="string")
         googlejson.results[0].geometry.location = {
           "lat":parseFloat(result.lat),
           "lng":parseFloat(result.lon)
-        }
+        }*/
     }
 
     // Make a formatted address as well as we can

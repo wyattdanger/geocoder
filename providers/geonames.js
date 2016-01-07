@@ -101,11 +101,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
             "types":[ "country" ]
           });
 
-        if (a.lat && typeof a.lat[0]=="string")
+        /*if (a.lat && typeof a.lat[0]=="string")
           googlejson.results[0].geometry.location = {
             "lat":parseFloat(a.lat[0]),
             "lng":parseFloat(a.lng[0])
-          }
+          }*/
       }
 
       if (result.geonames.geoname) {
