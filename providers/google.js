@@ -39,8 +39,10 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
       return;
     }
 
-    result.results[0].geometry.location.lat = parseFloat(lat);
-    result.results[0].geometry.location.lng = parseFloat(lng);
+    if(Array.isArray(result.results) && result.results.length > 0 && result.results[0].geometry && result.results[0].geometry.location) {
+      result.results[0].geometry.location.lat = parseFloat(lat);
+      result.results[0].geometry.location.lng = parseFloat(lng);
+    }
 
     cbk(null,result);
   });
