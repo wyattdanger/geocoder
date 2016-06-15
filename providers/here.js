@@ -49,7 +49,7 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
     }
 
     var view = result.Response.View[0];
-    if(!view) {
+    if(!view || !view.Result || !Array.isArray(view.Result) || !view.Result[0] || !view.Result[0].Location) {
       cbk(true, result);
       return;
     }
@@ -75,6 +75,7 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
     var location = view.Result[0].Location;
 
     if(location.Address) {
+      
       var a = location.Address;
 
       var additionalData = {};
