@@ -1,10 +1,10 @@
 var request = require("request");
-var _ = require('underscore');
+var extend = require('extend');
 
-exports.geocode = function ( providerOpts, loc, cbk, opts ) {
+exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
-  var options = _.extend({sensor: false, address: loc}, opts || {});
-  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
+  var options = extend({address: loc}, opts || {});
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json";
   request({
     uri: uri,
     qs:options
@@ -21,10 +21,10 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
   });
 };
 
-exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
+exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
-  var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
-  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
+  var options = extend({latlng: lat + ',' + lng}, opts || {});
+  var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json";
 
   request({
     uri:uri,
@@ -38,6 +38,12 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
       cbk(err);
       return;
     }
+
+    if(Array.isArray(result.results) && result.results.length > 0 && result.results[0].geometry && result.results[0].geometry.location) {
+      result.results[0].geometry.location.lat = parseFloat(lat);
+      result.results[0].geometry.location.lng = parseFloat(lng);
+    }
+
     cbk(null,result);
   });
 

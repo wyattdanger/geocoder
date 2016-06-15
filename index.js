@@ -10,7 +10,7 @@
  * Version
  */
 
-var version = '0.2.1';
+var version = '0.2.3';
 
 
 /**
@@ -57,23 +57,22 @@ Geocoder.prototype = {
    * @api public
    */
 
-  geocode: function ( loc, cbk, opts ) {
+  geocode: function ( loc, opts, cbk ) {
 
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
     
-    return this.providerObj.geocode(this.providerOpts, loc, cbk, opts);
+    return this.providerObj.geocode(this.providerOpts, loc, opts, cbk);
 
   },
 
-  reverseGeocode: function ( lat, lng, cbk, opts ) {
+  reverseGeocode: function ( lat, lng, opts, cbk ) {
     if ( !lat || !lng ) {
       return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
     }
 
-    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, cbk, opts );
-
+    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, opts, cbk);
   },
 
   /**

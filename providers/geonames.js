@@ -2,11 +2,11 @@
 // xml2js is optional because only needed for geonames support
 var xml2js = require("xml2js");
 var request = require("request");
-var _ = require('underscore');
+var extend = require('extend');
 
-exports.geocode = function ( providerOpts, loc, cbk, opts ) {
+exports.geocode = function ( providerOpts, loc, opts, cbk ) {
 
-  var options = _.extend({q: loc, maxRows: 10, username:providerOpts.username||"demo" }, opts || {});
+  var options = extend({q: loc, maxRows: 10, username:providerOpts.username||"demo" }, opts || {});
 
   request({
     uri:"http://api.geonames.org/searchJSON",
@@ -24,9 +24,9 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
   });
 };
 
-exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
+exports.reverseGeocode = function ( providerOpts, lat, lng, opts, cbk ) {
 
-  var options = _.extend({lat:lat, lng:lng, username:providerOpts.username||"demo" }, opts || {});
+  var options = extend({lat:lat, lng:lng, username:providerOpts.username||"demo" }, opts || {});
 
   request({
     uri:"http://api.geonames.org/extendedFindNearby",
@@ -101,11 +101,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
             "types":[ "country" ]
           });
 
-        if (a.lat && typeof a.lat[0]=="string")
+        /*if (a.lat && typeof a.lat[0]=="string")
           googlejson.results[0].geometry.location = {
             "lat":parseFloat(a.lat[0]),
             "lng":parseFloat(a.lng[0])
-          }
+          }*/
       }
 
       if (result.geonames.geoname) {
