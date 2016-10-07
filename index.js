@@ -11,6 +11,8 @@
  */
 
 var version = '0.2.1';
+const googleProvider = require("./providers/google");
+const yahooProvider = require("./providers/yahoo");
 
 
 /**
@@ -44,7 +46,9 @@ Geocoder.prototype = {
 
     this.provider = name;
     this.providerOpts = opts || {};
-    this.providerObj = require("./providers/"+name);
+    if (name === 'google') this.providerObj = googleProvider;
+    else if (name === 'yahoo') this.providerObj = yahooProvider;
+    else this.providerObj = require("./providers/"+name);
 
   },
 
