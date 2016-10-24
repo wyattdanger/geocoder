@@ -11,7 +11,7 @@ You can pass a string representation of a location and a callback function to `g
 ###Example:
 
 ```javascript
-var geocoder = require('geocoder');
+var geocoder = require('react-geocoder-component');
 
 // Geocoding
 geocoder.geocode("Atlanta, GA", function ( err, data ) {

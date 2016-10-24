@@ -1,12 +1,11 @@
 {
-  "name": "geocoder",
+  "name": "react_geocoder",
   "description": "Geocoding through Google's Developer API",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "main": "./index.js",
   "description": "node wrapper around google's geocoder api",
-  "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",
-  "repository" : "git://github.com/wyattdanger/geocoder",
-  "homepage" : "https://github.com/wyattdanger/geocoder",
+  "author": "Besat Zardosht",
+  "repository" : "https://github.com/BesatZardosht/geocoder",
   "keywords" : [ "google", "geocode", "geonames", "reverse geocode" ],
   "license": {
     "type": "Apachev2",

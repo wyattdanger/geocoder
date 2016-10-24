@@ -10,13 +10,13 @@
  * Version
  */
 
-var version = '0.2.1';
+var version = '1.0.0';
 const googleProvider = require("./providers/google");
 const yahooProvider = require("./providers/yahoo");
 
 
 /**
- * Geocoder 
+ * Geocoder
  */
 
 function Geocoder () {
@@ -32,7 +32,7 @@ Geocoder.prototype = {
 
   /**
    * Selects a webservice provider
-   * 
+   *
    * @param {String} name, required
    * @param {Object} opts, optional
    * @api public
@@ -54,7 +54,7 @@ Geocoder.prototype = {
 
   /**
    * Request geocoordinates of given `loc` from Google
-   * 
+   *
    * @param {String} loc, required
    * @param {Function} cbk, required
    * @param {Object} opts, optional
@@ -66,7 +66,7 @@ Geocoder.prototype = {
     if ( ! loc ) {
         return cbk( new Error( "Geocoder.geocode requires a location.") );
     }
-    
+
     return this.providerObj.geocode(this.providerOpts, loc, cbk, opts);
 
   },
@@ -82,7 +82,7 @@ Geocoder.prototype = {
 
   /**
    * Return Geocoder version
-   * 
+   *
    * @api public
    */
 
