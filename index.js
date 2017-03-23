@@ -10,16 +10,16 @@
  * Version
  */
 
-var version = '0.2.3';
+const version = '0.2.3';
 
 
 /**
  * Geocoder
  */
 
-function Geocoder () {
-  this.selectProvider("google");
-};
+function Geocoder() {
+  this.selectProvider('google');
+}
 
 /**
  * Geocoder prototype
@@ -36,16 +36,14 @@ Geocoder.prototype = {
    * @api public
    */
 
-  selectProvider: function ( name, opts ) {
-
-    if ( ! name ) {
-      return cbk( new Error( "Geocoder.selectProvider requires a name.") );
+  selectProvider(name, opts) {
+    if (!name) {
+      return cbk(new Error('Geocoder.selectProvider requires a name.'));
     }
 
     this.provider = name;
     this.providerOpts = opts || {};
-    this.providerObj = require("./providers/"+name);
-
+    this.providerObj = require(`./providers/${name}`);
   },
 
   /**
@@ -57,23 +55,20 @@ Geocoder.prototype = {
    * @api public
    */
 
-  geocode: function ( loc, cbk, opts ) {
-
-    if ( ! loc ) {
-        return cbk( new Error( "Geocoder.geocode requires a location.") );
+  geocode(loc, cbk, opts) {
+    if (!loc) {
+      return cbk(new Error('Geocoder.geocode requires a location.'));
     }
 
     return this.providerObj.geocode(this.providerOpts, loc, cbk, opts);
-
   },
 
-  reverseGeocode: function ( lat, lng, cbk, opts ) {
-    if ( !lat || !lng ) {
-      return cbk( new Error( "Geocoder.reverseGeocode requires a latitude and longitude." ) );
+  reverseGeocode(lat, lng, cbk, opts) {
+    if (!lat || !lng) {
+      return cbk(new Error('Geocoder.reverseGeocode requires a latitude and longitude.'));
     }
 
-    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, cbk, opts );
-
+    return this.providerObj.reverseGeocode(this.providerOpts, lat, lng, cbk, opts);
   },
 
   /**
@@ -82,7 +77,7 @@ Geocoder.prototype = {
    * @api public
    */
 
-  version: version
+  version,
 
 };
 
