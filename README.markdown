@@ -1,6 +1,6 @@
 # Geocoder
 
-###Installation:
+### Installation:
 
     npm install geocoder
 
@@ -8,7 +8,7 @@
 
 You can pass a string representation of a location and a callback function to `geocoder.geocode`. It will accept anything that Google will accept: cities, streets, countries, etc.
 
-###Example:
+### Example:
 
 ```javascript
 var geocoder = require('geocoder');
@@ -61,7 +61,7 @@ Results will look like standard [Google JSON Output](http://code.google.com/apis
 
 You can pass in an optional options hash as a last argument, useful for setting sensor to true (it defaults to false) and the language (default is empty which means that google geocoder will guess it by geo ip data). For details see the [Google Geocoding API Docs](https://developers.google.com/maps/documentation/javascript/geocoding)
 
-###Testing:
+### Testing:
 `nodeunit test`
 
 ## Roadmap
