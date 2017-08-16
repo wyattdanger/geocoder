@@ -1,15 +1,16 @@
-var request = require("request");
+var phin = require("phin");
 var _ = require('underscore');
+var querystring = require("querystring");
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
   var options = _.extend({sensor: false, address: loc}, opts || {});
   var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
-  request({
-    uri: uri,
-    qs:options
-  }, function(err,resp,body) {
+  phin({
+    url: uri + "?" + querystring.stringify(options)
+  }, function(err,resp) {
     if (err) return cbk(err);
+    var body = resp.body.toString();
     var result;
     try {
       result = JSON.parse(body);
@@ -26,11 +27,11 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
   var options = _.extend({sensor: false, latlng: lat + ',' + lng}, opts || {});
   var uri = "http" + ( options.key ? "s" : "" ) + "://maps.googleapis.com/maps/api/geocode/json"
 
-  request({
-    uri:uri,
-    qs:options
-  }, function(err,resp,body) {
+  phin({
+    url:uri + "?" + querystring.stringify(options)
+  }, function(err,resp) {
     if (err) return cbk(err);
+    var body = resp.body.toString();
     var result;
     try {
       result = JSON.parse(body);

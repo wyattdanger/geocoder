@@ -1,17 +1,17 @@
 // xml2js is optional because only needed for geonames support
 var xml2js = require("xml2js");
-var request = require("request");
+var phin = require("phin");
 var _ = require('underscore');
 
 exports.geocode = function ( providerOpts, loc, cbk, opts ) {
 
   var options = _.extend({q: loc, flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 
-  request({
-    uri:"http://where.yahooapis.com/geocode",
-    qs:options
-  }, function(err,resp,body) {
+  phin({
+    url:"http://where.yahooapis.com/geocode?" + querystring.stringify(options)
+  }, function(err,resp) {
     if (err) return cbk(err);
+    var body = resp.body.toString();
     var result;
     try {
       result = JSON.parse(body);
@@ -28,16 +28,17 @@ exports.reverseGeocode = function ( providerOpts, lat, lng, cbk, opts ) {
 
   var options = _.extend({q: lat+", "+lng, gflags:"R", flags: "J", appid:providerOpts.appid||"[yourappidhere]" }, opts || {});
 
-  request({
-    uri:"http://where.yahooapis.com/geocode",
-    qs:options
-  }, function(err,resp,body) {
+  phin({
+    url:"http://where.yahooapis.com/geocode?" + querystring.stringify(options)
+  }, function(err,resp) {
 
     // console.log("[GEOCODER Yahoo API] uri:", "http://where.yahooapis.com/geocode");
     // console.log("[GEOCODER Yahoo API] options:", JSON.stringify(options));
     // console.log("[GEOCODER Yahoo API] body:", body);
 
     if (err) return cbk(err);
+
+    var body = resp.body.toString();
 
     var result;
     try {

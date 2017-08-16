@@ -1,20 +1,24 @@
 {
   "name": "geocoder",
-  "description": "Geocoding through Google's Developer API",
+  "description": "node wrapper around google's geocoder api",
   "version": "0.2.3",
   "main": "./index.js",
-  "description": "node wrapper around google's geocoder api",
   "author": "Stephen Wyatt Bush <stephen.wyatt@gmail.com>",
-  "repository" : "git://github.com/wyattdanger/geocoder",
-  "homepage" : "https://github.com/wyattdanger/geocoder",
-  "keywords" : [ "google", "geocode", "geonames", "reverse geocode" ],
+  "repository": "git://github.com/wyattdanger/geocoder",
+  "homepage": "https://github.com/wyattdanger/geocoder",
+  "keywords": [
+    "google",
+    "geocode",
+    "geonames",
+    "reverse geocode"
+  ],
   "license": {
     "type": "Apachev2",
     "url": "http://www.apache.org/licenses/LICENSE-2.0"
   },
-  "dependencies" : {
-    "underscore" : "1.3.3",
-    "request":"^2.75.0"
+  "dependencies": {
+    "phin": "^2.2.4",
+    "underscore": "1.3.3"
   },
   "optionalDependencies": {
     "xml2js": "0.2.0"
