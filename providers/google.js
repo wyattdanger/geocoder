@@ -13,6 +13,7 @@ exports.geocode = function ( providerOpts, loc, cbk, opts ) {
     var result;
     try {
       result = JSON.parse(body);
+      return result
     } catch (err) {
       cbk(err);
       return;
